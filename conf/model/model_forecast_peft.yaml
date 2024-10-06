@@ -1,0 +1,22 @@
+name: forecast-peft
+pretrained_model: forecast-mae
+
+target:
+  _target_: src.model.trainer_forecast_peft.Trainer
+  dim: 128
+  historical_steps: 50
+  future_steps: 60
+  encoder_depth: 4
+  num_heads: 8
+  mlp_ratio: 4.0
+  qkv_bias: False
+  drop_path: 0.2
+  pretrained_weights: ${pretrained_weights}
+  lr: ${lr}
+  weight_decay: ${weight_decay}
+  epochs: ${epochs}
+  warmup_epochs: ${warmup_epochs}
+  param_efficient: True 
+  prompt_length: 50
+  adapter_rank: 64
+  modes: 6
